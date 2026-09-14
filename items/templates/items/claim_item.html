@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Claim Item - Campus Lost & Found</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 25px;
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            color: #111827;
+        }
+
+        .item-name {
+            color: #4f46e5;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 160px;
+            padding: 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            resize: vertical;
+            margin-bottom: 20px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #4f46e5;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 9px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #4338ca;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <a href="/" class="back">← Back to Home</a>
+
+    <h1>Claim This Item</h1>
+
+    <p class="item-name">
+        {{ item.item_name }}
+    </p>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <label>
+            Why do you believe this item belongs to you?
+        </label>
+
+        <textarea
+            name="message"
+            placeholder="Describe details that can help verify that this item belongs to you..."
+            required
+        ></textarea>
+
+        <button type="submit">
+            Submit Claim Request
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
